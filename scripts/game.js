@@ -1,10 +1,3 @@
-// alert(state.history[0].variables.my_var)
-// if (state.history[0].variables.my_var == 0){
-//  alert("test")
-// }
-// alert(state.history[0].variables.my_var);
-// state.history[0].variables.my_var = 1;
-
 window.requestAnimFrame = (function(){
   return  window.requestAnimationFrame ||
       window.webkitRequestAnimationFrame ||
@@ -23,6 +16,8 @@ var height = document.getElementById("gameCanvas").height;
 var gameContext = document.getElementById("gameCanvas").getContext("2d");
 
 var keys = [];
+var images = [];
+var doneImages = 0;
 
 var player = null;
 
@@ -59,16 +54,17 @@ var canvas = document.getElementById('gameCanvas');
 
 
 function init(){
+  thing = new Thing();
   loop();
   // DON'T PUT ANYTHING AFTER THE GAME LOOP STARTS!
 }
 
 function update(){
-
+  thing.update();
 }
 
 function render(){
-
+  thing.draw();
 }
 
 
@@ -78,5 +74,9 @@ function loop(){
   });
   update();
   render();
+
 }
 
+loadImages(["assets/test_image.png"]);
+
+checkImages();
